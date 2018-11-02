@@ -34,7 +34,7 @@ class Scrapper {
             const reqUrl = url.parse(interceptedRequest.url())
             const reqExt = path.extname(reqUrl.pathname)
             const reqHost = reqUrl.hostname
-            
+
             if (RegExp('\.(css|png|jpe?g|gif)', 'i').test(reqExt)) {
                 interceptedRequest.abort()
             } else if (reqHost.endsWith('togetter.com') || reqHost.endsWith('ajax.googleapis.com')) {
@@ -85,11 +85,16 @@ class Scrapper {
     }
 
     async gotoNextPage() {
-        if (await this.page.$eval('.pagenation > a:last-child', a => a.textContent !== '次へ')) {
+        const selector = '.pagenation > a:last-child'
+        // evalは存在しないとErrorになるので$で事前にnullチェックする
+        if (!await this.page.$(selector)) {
+            return false
+        }
+        if (await this.page.$eval(selector, a => a.textContent !== '次へ')) {
             return false
         }
         return Promise.all([
-            this.page.click('.pagenation > a:last-child'),
+            this.page.click(selector),
             this.page.waitForNavigation(),
         ])
     }
