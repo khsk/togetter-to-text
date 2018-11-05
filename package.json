@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nuxt",
-    "start": "node express.js"
+    "start": "node express.js",
+    "now-start":  "node express.js",
+    "now": "now --public && now alias && now rm togetter-to-text --safe --yes"
   },
   "author": "",
   "license": "MIT",
