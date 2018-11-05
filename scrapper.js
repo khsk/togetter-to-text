@@ -25,7 +25,17 @@ class Scrapper {
     async initBrowser() {
         // 表示しながらよりheadlessのほうが異常に遅かったので不要なリクエストのabortを追加で改善
 
-        this.browser = await puppeteer.launch({ headless: true, })
+        if (process.env.NODE_ENV === 'production') {
+            this.browser = await puppeteer.launch({
+                executablePath: '/usr/bin/chromium-browser',
+                args: ['--no-sandbox', '--headless', '--disable-gpu', '-—disable-dev-tools'],
+                dumpio: true,
+                devtools: false,
+            })
+        } else {
+            this.browser = await puppeteer.launch({ headless: true, })
+        }
+
         this.page = await this.browser.newPage()
         await this.page.setDefaultNavigationTimeout(60 * 5 * 1000)
         // 不要なリクエストは中断して読み込みを高速化する https://qiita.com/unhurried/items/56ea099c895fa437b56e

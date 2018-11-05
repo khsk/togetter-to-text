@@ -12,10 +12,10 @@ const config = require('./nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
 const nuxt = new Nuxt(config)
 
-if (config.dev) {
+// if (config.dev) {
     const builder = new Builder(nuxt)
     builder.build()
-}
+// }
 
 const Scrapper = require('./scrapper').Scrapper
 const scrapper = new Scrapper()
@@ -42,6 +42,9 @@ app.post('/api',  async (req, res) => {
     console.log(req.body.id)
     res.send(await getBody(req.body.id))
 })
+
+app.get('/test', (req, res) => res.send('Hello from Express!'))
+
 
 // 後ろに持ってこないとexpressのルーティングが効かない？
 app.use(nuxt.render)

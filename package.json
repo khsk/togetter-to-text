@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nuxt",
     "start": "node express.js",
-    "now-start":  "node express.js",
+    "now-start": "node express.js",
     "now": "now --public && now alias && now rm togetter-to-text --safe --yes"
   },
   "author": "",
@@ -20,5 +20,8 @@
     "bulma-tooltip": "^2.0.2",
     "nuxt": "^2.2.0",
     "puppeteer": "^1.9.0"
+  },
+  "devDependencies": {
+    "yarn": "^1.12.1"
   }
 }

@@ -1,5 +1,9 @@
 {
     "name":  "togetter-to-text",
     "alias": "togetter-to-text.now.sh",
-    "env": {}
+    "env": {},
+    "type": "docker",
+    "features": {
+      "cloud": "v1"
+    }
 }
