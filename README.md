@@ -1,8 +1,11 @@
 # togetter-to-text
 TogetterをPuppeteerでスクレイピングする
 
+![tttweb](https://user-images.githubusercontent.com/10125386/48048132-c8578100-e1dd-11e8-869c-cba415486907.gif)
+![ttt](https://user-images.githubusercontent.com/10125386/48048125-c392cd00-e1dd-11e8-8ffa-6ff076e4d4bd.gif)
+
 # 何ができますか？
-Togetetrのまとめから、Tweet部分だけをrawtextにして出力します。  
+TogetetrのまとめからTweet部分だけをrawtextにして出力します。  
 個人利用の範囲でお楽しみください。
 
 # 何のために作られましたか？
@@ -46,7 +49,7 @@ Tweet内容
 # Webアプリケーション版の使い方
 
 CLIは煩わしいという場合のために、Nuxtで構成されたWebアプリケーションを用意しました。  
-`exoress.js`を実行すると、`localhost:3000`にサーバーが建ちます。  
+`express.js`を実行すると、`localhost:3000`にサーバーが建ちます。  
 `input`にIDを入力すると、`<pre>`として結果が出力されます。  
 その状態から、クリップボードへのコピーとtxtファイルとしてダウンロードが選択できます。
 
