@@ -27,7 +27,6 @@ const getBody = async id => {
         }
         scrapper.init()
         const text = await  scrapper.getText(id)
-        console.log(text)
         return text
     } catch (e) {
         console.error(e)

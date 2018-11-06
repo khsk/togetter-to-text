@@ -25,7 +25,6 @@ export default {
     }),
     methods: {
         copyToClipbord(e) {
-            console.log(toast)
             document.addEventListener('copy', (e) => {
                 e.preventDefault();
                 e.clipboardData.setData('text/plain', document.querySelector('#tweets').textContent);
