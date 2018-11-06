@@ -76,7 +76,12 @@ class Scrapper {
     async loadMoreTweet() {
         const moreTweetId = '#more_tweet_btn'
         if (await this.page.$(moreTweetId)) {
-            await Promise.all([this.page.waitFor((moreTweetId) => !document.querySelector(moreTweetId), moreTweetId), this.page.click(moreTweetId),])
+            if (process.env.NODE_ENV === 'production') {
+                // now環境で.click()にError: Node is either not visible or not an HTMLElementがでるのでeval clickで回避する
+                await Promise.all([this.page.waitFor((moreTweetId) => !document.querySelector(moreTweetId), moreTweetId), this.page.evaluate(moreTweetId => { document.querySelector(moreTweetId).click() }, moreTweetId),])
+            } else {
+                await Promise.all([this.page.waitFor((moreTweetId) => !document.querySelector(moreTweetId), moreTweetId), this.page.click(moreTweetId),])
+            }
         }
     }
 
@@ -103,10 +108,17 @@ class Scrapper {
         if (await this.page.$eval(selector, a => a.textContent !== '次へ')) {
             return false
         }
-        return Promise.all([
-            this.page.click(selector),
-            this.page.waitForNavigation(),
-        ])
+        if (process.env.NODE_ENV === 'production') {
+            return Promise.all([
+                this.page.evaluate(selector => { document.querySelector(selector).click() }, selector),
+                this.page.waitForNavigation(),
+            ])
+        } else {
+            return Promise.all([
+                this.page.click(selector),
+                this.page.waitForNavigation(),
+            ])
+        }
     }
 }
 

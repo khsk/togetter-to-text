@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nuxt",
     "start": "node express.js",
-    "now-start": "node express.js",
-    "now": "now --public && now alias && now rm togetter-to-text --safe --yes"
+    "now-start": "now --public && now alias && now rm togetter-to-text --safe --yes",
+    "now": "npm run now-start"
   },
   "author": "",
   "license": "MIT",
@@ -18,6 +18,7 @@
     "bulma-pageloader": "^2.1.0",
     "bulma-toast": "^1.4.0",
     "bulma-tooltip": "^2.0.2",
+    "express": "^4.16.4",
     "nuxt": "^2.2.0",
     "puppeteer": "^1.9.0"
   },
