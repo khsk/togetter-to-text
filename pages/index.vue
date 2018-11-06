@@ -6,8 +6,8 @@
         <label class="label" for="input-id">取得するまとめ</label>
         <div class="field has-addons">
             <div class="control is-expanded">
-                <input id="input-id" class="input is-primary is-large" type="number" :value="togetterId" v-bind:readonly=isLoading @input="setId" placeholder="取得したいTogetterのIDを入力してください(https://togetter/li/(ID))">
-                <p class="help">取得したいTogetterのIDを入力してください https://togetter/li/(ID)</p>
+                <input id="input-id" class="input is-primary is-large" type="number" :value="togetterId" v-bind:readonly=isLoading @input="setId" placeholder="取得したいTogetterのIDを入力してください(https://togetter.com/li/(ID))">
+                <p class="help">取得したいTogetterのIDを入力してください https://togetter.com/li/(ID)</p>
             </div>
             <div class="control">
                 <a class="button is-large is-primary  wf-nicomoji" v-on:click="getText" v-bind:class="{ 'is-loading': isLoading }">
