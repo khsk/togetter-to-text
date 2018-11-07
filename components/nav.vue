@@ -2,7 +2,7 @@
     <nav class="navbar is-fixed-top is-primary">
         <div class="navbar-brand ">
           <!-- <img src="~/assets/images/logo.png"> -->
-          <p class="wf-nicomoji has-text-light is-size-3 name">トリプルT ～ Togetter To Text ～</p>
+          <p class="wf-nicomoji has-text-light is-size-3 name">{{title}}</p>
         </div>
     </nav>
 </template>
@@ -12,3 +12,12 @@
         user-select: none;
     }
 </style>
+
+<script>
+import { mapState }  from 'vuex'
+export default {
+    computed: mapState({
+        title     : 'title',
+    }),
+}
+</script>

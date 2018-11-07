@@ -36,6 +36,7 @@ export default {
         togetterId: 'togetterId',
         isLoading : 'isLoading', 
         text      : 'text',
+        title     : 'title',
     }),
     methods: {
         setId(e) {
@@ -45,8 +46,23 @@ export default {
             this.$store.commit('setIsLoadig', true)
             this.$store.dispatch('getText', this.$store.togetterId).then(() => {
                 this.$store.commit('setIsLoadig', false)
+                if (!this.$store.state.isWindowActive) {
+                    document.title = this.$store.state.title + ' 取得完了'
+                }
             })
         }
+    },
+    mounted() {
+        window.addEventListener('blur', e => {
+            this.$store.commit('setIsWindowActive', false)
+        })
+        window.addEventListener('focus', e => {
+            this.$store.commit('setIsWindowActive', true)
+            document.title = this.$store.state.title
+        })
+    },
+    head() {
+        return {title: this.$store.state.title}
     },
     directives: {
         focus: {

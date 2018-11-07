@@ -1,9 +1,11 @@
 import axios from 'axios'
 
 export const state = () => ({
-    togetterId : '',
-    text       : '',
-    isLoading  : false,
+    togetterId     : '',
+    text           : '',
+    isLoading      : false,
+    isWindowActive : false,
+    title          : 'トリプルT ～ Togetter To Text ～'
 })
 
 export const mutations = {
@@ -15,6 +17,9 @@ export const mutations = {
     },
     setIsLoadig(state, loadingState) {
         state.isLoading = !!loadingState
+    },
+    setIsWindowActive(state, isActive) {
+        state.isWindowActive = !!isActive
     },
 }
 
